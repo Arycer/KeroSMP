@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "kerosmp",
+  "version": "${version}",
+  "name": "Kero SMP",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/Arycer/KeroSMP"
+  },
+  "license": "All-Rights-Reserved",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "me.arycer.kerosmp.Main"
+    ]
+  },
+  "mixins": [
+    "kerosmp.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
