@@ -1,6 +1,9 @@
 package me.arycer.kerosmp;
 
+import me.arycer.kerosmp.Commands.SetLanguage;
+import me.arycer.kerosmp.Config.ModConfig;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.server.MinecraftServer;
@@ -39,8 +42,15 @@ public class Main implements ModInitializer {
         return (ServerWorldProperties) serverWorld.getLevelProperties();
     }
 
+    private static final ModConfig config = new ModConfig();
+    public static ModConfig getConfig() {
+        return config;
+    }
+
     @Override
     public void onInitialize() {
+        config.readConfig();
+        CommandRegistrationCallback.EVENT.register(SetLanguage::register);
         ServerLifecycleEvents.SERVER_STARTED.register(server -> Main.server = server);
 
         LOGGER.info("Kero SMP has been initialized!");
